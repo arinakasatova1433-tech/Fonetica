@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила ударения в испанском</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f9f9f9;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #003366;
+        }
+        h1 {
+            border-bottom: 3px solid #cc9900;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 30px;
+            border-left: 6px solid #cc9900;
+            padding-left: 15px;
+        }
+        .rule-block {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 22px;
+            margin: 20px 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            border-left: 5px solid #2a7faa;
+        }
+        .rule-block.warning {
+            border-left-color: #d97706;
+            background: #fffbeb;
+        }
+        .accent {
+            color: #b22222;
+            font-weight: bold;
+        }
+        .highlight {
+            background: #fce94f;
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        .table-diph {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        .table-diph th {
+            background: #003366;
+            color: white;
+            padding: 8px 12px;
+            text-align: center;
+        }
+        .table-diph td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            background: white;
+        }
+        .table-diph td:first-child {
+            font-weight: bold;
+            background: #eef;
+        }
+        .exercise {
+            background: #e6f2ff;
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+        .exercise .word-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .exercise .word-row label {
+            min-width: 80px;
+            font-weight: 500;
+        }
+        .exercise .word-row input {
+            padding: 5px 8px;
+            font-size: 1rem;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            flex: 1 1 180px;
+            font-family: inherit;
+        }
+        .exercise .word-row .result {
+            font-size: 1.2rem;
+            min-width: 30px;
+            text-align: center;
+        }
+        .exercise .word-row .result.correct {
+            color: #2e7d32;
+        }
+        .exercise .word-row .result.wrong {
+            color: #c62828;
+        }
+        .exercise button {
+            background: #003366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .exercise button:hover {
+            background: #002244;
+        }
+        .exercise .score {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .audio-placeholder {
+            background: #f0f0f0;
+            border: 2px dashed #999;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .audio-placeholder audio {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 10px;
+        }
+        details {
+            margin-top: 20px;
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        details summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: #003366;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .exercise .word-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .exercise .word-row label {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>📚 Правила ударения в испанском языке</h1>
+
+<!-- ===================== 1. ОСНОВНОЕ ПРАВИЛО ===================== -->
+<h2>1. Основное правило (по окончанию слова)</h2>
+<div class="rule-block">
+    <p><strong>Если слово оканчивается на согласную, <span class="accent">кроме –s, –n</span></strong> → ударение падает на <strong>последний</strong> слог.</p>
+    <ul>
+        <li><em>lector</em> – читатель</li>
+        <li><em>profesor</em> – преподаватель</li>
+        <li><em>ciudad</em> – город</li>
+    </ul>
+</div>
+<div class="rule-block">
+    <p><strong>Если слово оканчивается на гласную <em>или</em> на –s, –n</strong> → ударение падает на <strong>предпоследний</strong> слог.</p>
+    <ul>
+        <li><em>luna</em> – луна</li>
+        <li><em>aves</em> – птицы</li>
+        <li><em>respetan</em> – (они) уважают</li>
+        <li><em>joven</em> – молодой</li>
+    </ul>
+</div>
+<div class="rule-block warning">
+    <p><strong>⚠️ Отклонения</strong> – если слово не подчиняется этим правилам, над ударным слогом ставится <span class="accent">графическое ударение</span> (tilde).</p>
+    <ul>
+        <li><em>águila</em> – орёл (оканчивается на гласную, но ударение на первый слог)</li>
+        <li><em>póster</em> – плакат (оканчивается на согласную, но ударение на первый слог)</li>
+        <li><em>canción</em> – песня (оканчивается на n, но ударение на последний слог)</li>
+    </ul>
+</div>
+
+<!-- ===================== 2. ДИФТОНГИ И ОСОБЫЙ СЛУЧАЙ ===================== -->
+<h2>2. Дифтонги и особый случай – хиатус</h2>
+
+<div class="rule-block">
+    <p><strong>Сильные гласные:</strong> <span class="highlight">a, e, o</span> &nbsp;|&nbsp; <strong>Слабые гласные:</strong> <span class="highlight">i, u</span></p>
+</div>
+
+<h3>Дифтонг</h3>
+<div class="rule-block">
+    <p>Дифтонг – это сочетание <strong>сильной + слабой</strong> (или <strong>слабой + сильной</strong>) гласной в одном слоге. <br>
+    Ударение в дифтонге всегда падает на <strong>сильную</strong> гласную.</p>
+    <table class="table-diph">
+        <tr><th>Сочетание</th><th>Пример</th></tr>
+        <tr><td>ai, oi, ei</td><td>aire, oigo, reino</td></tr>
+        <tr><td>ia, ie, io</td><td>piano, pieza, nervio</td></tr>
+        <tr><td>au, eu, ou</td><td>Paula, Europa</td></tr>
+        <tr><td>ua, uo, ue</td><td>cuatro, antiguo, pueblo</td></tr>
+        <tr><td>iu, ui</td><td>viuda, ruido</td></tr>
+    </table>
+    <p><em>В дифтонгах <strong>iu, ui</strong> ударение падает на <strong>вторую</strong> слабую гласную (но графически не ставится, если это односложное слово или если по общему правилу не требуется).</em></p>
+</div>
+
+<h3>Особый случай – хиатус (правило «Луиса»)</h3>
+<div class="rule-block warning">
+    <p><strong>Запомни имя <span class="accent">Luis</span>!</strong></p>
+    <p>Если в слове есть сочетание <strong>сильной и слабой</strong> гласной, но ударение падает именно на <strong>слабую</strong> гласную – это <strong>хиатус</strong>, и такая слабая гласная <strong>всегда</strong> пишется с графическим ударением (tilde).</p>
+    <ul>
+        <li><em>pa<span class="accent">í</span>s</em> – страна (сильная a + слабая í)</li>
+        <li><em>r<span class="accent">í</span>o</em> – река (слабая í + сильная o)</li>
+        <li><em>act<span class="accent">ú</span>a</em> – он/она действует (слабая ú + сильная a)</li>
+        <li><em>d<span class="accent">ú</span>o</em> – дуэт (слабая ú + сильная o)</li>
+    </ul>
+    <p>А вот имя <strong>Luis</strong> – здесь две слабые гласные (<em>u</em> и <em>i</em>), ударение падает на вторую (<em>i</em>), но слово односложное и не имеет омонима, поэтому <strong>ударение не ставится</strong>.</p>
+    <p><span class="highlight">Важно:</span> Если хиатус состоит из <strong>двух сильных</strong> гласных, ударение ставится по общему правилу (без обязательного графического знака).</p>
+</div>
+
+<!-- ===================== 3. ТРИФТОНГИ ===================== -->
+<h2>3. Трифтонги</h2>
+<div class="rule-block">
+    <p>Трифтонг – сочетание <strong>слабой + сильной + слабой</strong> гласной в одном слоге. Ударение падает на <strong>сильную</strong> гласную.</p>
+    <ul>
+        <li><em>limpiáis</em> – (вы) очищаете</li>
+        <li><em>limpiéis</em> – (чтобы вы) очистили</li>
+        <li><em>Uruguay</em> – Уругвай</li>
+        <li><em>continuáis</em> – (вы) продолжаете</li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ===================== 4. ===================== -->
+<h2>4. Поставь ударение, где необходимо</h2>
+<div class="exercise" id="ex1">
+    <p><strong>Инструкция:</strong> Введи слова с правильным ударением (если нужно).</p>
+    <div id="ex1-words"></div>
+    <button onclick="checkExercise('ex1')">Проверить</button>
+    <div class="score" id="ex1-score"></div>
+    <details>
+        <summary>📖 Посмотреть правильные ответы</summary>
+        <ul style="margin-top:10px;">
+            <li>1. canción</li>
+            <li>2. árbol</li>
+            <li>3. joven</li>
+            <li>4. héroe</li>
+            <li>5. también</li>
+            <li>6. científico</li>
+            <li>7. actúan</li>
+            <li>8. construir</li>
+            <li>9. país</li>
+            <li>10. Luis</li>
+        </ul>
+    </details>
+</div>
+
+<!-- ===================== 5. ===================== -->
+<h2>5. Прочитай и объясни постановку ударения</h2>
+<div class="exercise">
+    <p><strong>Слова с уже проставленным ударением:</strong><br>
+    limón, egoísta, público, México, diálogo, José, Raúl, interés, Fernández, vídeo, difícil, Moscú, artículo, catástrofe, poesía, azúcar, freír, anécdota, automóvil.</p>
+    <p><em>Задание:</em> для каждого слова определи, почему стоит ударение (по какому правилу). Проверь себя, раскрыв ответы.</p>
+    <details>
+        <summary>📖 Объяснение для всех слов</summary>
+        <ul style="columns:2 260px; list-style:none; padding-left:0;">
+            <li><strong>limón</strong> – оканчивается на n, но ударение на последний (исключение)</li>
+            <li><strong>egoísta</strong> – хиатус 'oí' – ударение на í (слабая)</li>
+            <li><strong>público</strong> – отклонение от правила (оканчивается на o, ударение на первый слог)</li>
+            <li><strong>México</strong> – отклонение (оканчивается на o, ударение на первый слог)</li>
+            <li><strong>diálogo</strong> – хиатус 'ía' – ударение на í</li>
+            <li><strong>José</strong> – отклонение (оканчивается на e, ударение на последний)</li>
+            <li><strong>Raúl</strong> – хиатус 'aú' – ударение на ú</li>
+            <li><strong>interés</strong> – оканчивается на s, но ударение на последний (исключение)</li>
+            <li><strong>Fernández</strong> – оканчивается на z (согласная не s/n) → ударение на последний (по правилу)</li>
+            <li><strong>vídeo</strong> – хиатус 'íe' – ударение на í</li>
+            <li><strong>difícil</strong> – оканчивается на l (согласная не s/n) → ударение на последний (по правилу)</li>
+            <li><strong>Moscú</strong> – отклонение (оканчивается на u, ударение на последний)</li>
+            <li><strong>artículo</strong> – отклонение (ударение на третий слог)</li>
+            <li><strong>catástrofe</strong> – отклонение (ударение на 'tás')</li>
+            <li><strong>poesía</strong> – хиатус 'ía' – ударение на í</li>
+            <li><strong>azúcar</strong> – отклонение (оканчивается на r, ударение на первый)</li>
+            <li><strong>freír</strong> – ударение на í (хиатус или отклонение)</li>
+            <li><strong>anécdota</strong> – отклонение (ударение на 'néc')</li>
+            <li><strong>automóvil</strong> – отклонение (ударение на 'mó')</li>
+        </ul>
+    </details>
+</div>
+
+<!-- ===================== 6. ===================== -->
+<h2>6. Поставь ударение, где необходимо (по аудио)</h2>
+<div class="exercise" id="ex4">
+    <p><strong>Прослушай аудио и введи слова с правильным ударением.</strong></p>
+    <div class="audio-placeholder">
+        <audio controls>
+            <source src="https://www.profedeele.es/wp-content/uploads/h5p/content/546/audios/files-5c0969a9895ed.mp3" type="audio/mpeg">
+            Твой браузер не поддерживает аудио. <a href="https://www.profedeele.es/wp-content/uploads/h5p/content/546/audios/files-5c0969a9895ed.mp3">Скачай файл</a>.
+        </audio>
+    </div>
+    <div id="ex4-words"></div>
+    <button onclick="checkExercise('ex4')">Проверить</button>
+    <div class="score" id="ex4-score"></div>
+    <details>
+        <summary>✅ Правильные ответы (1–19)</summary>
+        <ul style="columns:2 200px; list-style:none; padding-left:0;">
+            <li><strong>lápiz</strong></li>
+            <li><strong>frágil</strong></li>
+            <li><strong>rápidamente</strong></li>
+            <li><strong>plató</strong></li>
+            <li><strong>público</strong></li>
+            <li><strong>secretaría</strong></li>
+            <li><strong>marco</strong> (без ударения)</li>
+            <li><strong>bálsamo</strong></li>
+            <li><strong>oír</strong></li>
+            <li><strong>librería</strong></li>
+            <li><strong>dátil</strong></li>
+            <li><strong>dímelo</strong></li>
+            <li><strong>bajó</strong></li>
+            <li><strong>fútbol</strong></li>
+            <li><strong>médico</strong></li>
+            <li><strong>lentamente</strong> (без ударения)</li>
+            <li><strong>arreglámelo</strong></li>
+            <li><strong>cuadro</strong> (без ударения)</li>
+            <li><strong>mecánico</strong></li>
+        </ul>
+    </details>
+</div>
+
+<hr>
+
+<div class="footer">
+    <p>© 2025 · Для урока испанского языка · Удачи!</p>
+</div>
+
+<script>
+    // Данные для упражнений
+    const exercises = {
+        ex1: {
+            words: ['cancion', 'arbol', 'joven', 'heroe', 'tambien', 'cientifico', 'actuan', 'construir', 'pais', 'Luis'],
+            correct: ['canción', 'árbol', 'joven', 'héroe', 'también', 'científico', 'actúan', 'construir', 'país', 'Luis']
+        },
+        ex4: {
+            words: ['lapiz', 'fragil', 'rapidamente', 'plato', 'publico', 'secretaria', 'marco', 'balsamo', 'oir', 'libreria', 'datil', 'dimelo', 'bajo', 'futbol', 'medico', 'lentamente', 'arreglamelo', 'cuadro', 'mecanico'],
+            correct: ['lápiz', 'frágil', 'rápidamente', 'plató', 'público', 'secretaría', 'marco', 'bálsamo', 'oír', 'librería', 'dátil', 'dímelo', 'bajó', 'fútbol', 'médico', 'lentamente', 'arreglámelo', 'cuadro', 'mecánico']
+        }
+    };
+
+    // Функция рендеринга полей
+    function renderExercise(exId) {
+        const data = exercises[exId];
+        const container = document.getElementById(exId + '-words');
+        if (!container) return;
+        let html = '';
+        data.words.forEach((word, index) => {
+            html += `
+                <div class="word-row">
+                    <label>${index+1}. ${word}</label>
+                    <input type="text" id="${exId}-input-${index}" placeholder="введи с ударением">
+                    <span class="result" id="${exId}-result-${index}"></span>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    // Функция проверки
+    function checkExercise(exId) {
+        const data = exercises[exId];
+        let correctCount = 0;
+        const total = data.correct.length;
+        for (let i = 0; i < total; i++) {
+            const input = document.getElementById(`${exId}-input-${i}`);
+            const resultSpan = document.getElementById(`${exId}-result-${i}`);
+            if (!input) continue;
+            const userAnswer = input.value.trim();
+            const isCorrect = userAnswer === data.correct[i];
+            resultSpan.textContent = isCorrect ? '✅' : '❌';
+            resultSpan.className = 'result ' + (isCorrect ? 'correct' : 'wrong');
+            if (isCorrect) correctCount++;
+        }
+        document.getElementById(`${exId}-score`).textContent = `Правильно: ${correctCount} из ${total}`;
+    }
+
+    // Инициализация всех упражнений при загрузке
+    window.onload = function() {
+        renderExercise('ex1');
+        renderExercise('ex4');
+    };
+</script>
+
+</body>
+</html>

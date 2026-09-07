@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Испанский род, число, артикли — игры</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #f5f7fc;
+            color: #1e2a3a;
+        }
+        h1 {
+            text-align: center;
+            border-bottom: 4px solid #cc9900;
+            padding-bottom: 12px;
+            color: #003366;
+        }
+        h2 {
+            color: #003366;
+            border-left: 6px solid #cc9900;
+            padding-left: 16px;
+            margin-top: 40px;
+        }
+        .game-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin: 30px 0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        .game-card h3 {
+            margin-top: 0;
+            color: #003366;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            align-items: center;
+            margin: 12px 0;
+        }
+        .row label {
+            min-width: 100px;
+            font-weight: 500;
+        }
+        .row input, .row select {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid #bcc3d0;
+            font-size: 1rem;
+            background: white;
+            flex: 1 1 180px;
+        }
+        .row select {
+            flex: 0 1 auto;
+        }
+        .word-badge {
+            background: #e8edf9;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .btn {
+            background: #003366;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 6px 4px 6px 0;
+        }
+        .btn:hover {
+            background: #002244;
+            transform: scale(0.97);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #003366;
+            border: 2px solid #003366;
+        }
+        .btn-outline:hover {
+            background: #00336622;
+        }
+        .result-badge {
+            font-size: 1.5rem;
+            min-width: 40px;
+            text-align: center;
+        }
+        .correct { color: #1e7e34; }
+        .wrong { color: #b22234; }
+        .score {
+            font-weight: 700;
+            margin-top: 16px;
+            font-size: 1.1rem;
+        }
+        .flex-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 18px;
+            align-items: center;
+        }
+        .mini-table {
+            background: #f0f4fe;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+        .mini-table table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .mini-table td, .mini-table th {
+            padding: 6px 14px;
+            border: 1px solid #c9d4e8;
+        }
+        .mini-table th {
+            background: #003366;
+            color: white;
+        }
+        .rule-hint {
+            background: #fff6e0;
+            border-radius: 12px;
+            padding: 12px 18px;
+            margin: 10px 0;
+            border-left: 5px solid #cc9900;
+        }
+        .inline-icon {
+            font-size: 1.4rem;
+            margin-right: 6px;
+        }
+        @media (max-width: 600px) {
+            .row { flex-direction: column; align-items: stretch; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🇪🇸 Испанский: род, число, артикли</h1>
+
+<!-- ======================== ТЕОРИЯ (кратко) ======================== -->
+<div class="game-card" style="background:#f0f4fe;">
+    <h3>📘 Теория (по твоим скринам)</h3>
+    <div style="display:flex; flex-wrap:wrap; gap:20px;">
+        <div style="flex:1; min-width:200px;">
+            <h4>Артикли</h4>
+            <table style="border-collapse:collapse; background:white; border-radius:12px; overflow:hidden;">
+                <tr><th style="background:#003366;color:white;padding:6px 12px;"></th><th style="background:#003366;color:white;padding:6px 12px;">ед.</th><th style="background:#003366;color:white;padding:6px 12px;">мн.</th></tr>
+                <tr><td style="padding:4px 12px;border:1px solid #ccc;"><strong>м.р</strong></td><td style="padding:4px 12px;border:1px solid #ccc;">un / el</td><td style="padding:4px 12px;border:1px solid #ccc;">unos / los</td></tr>
+                <tr><td style="padding:4px 12px;border:1px solid #ccc;"><strong>ж.р</strong></td><td style="padding:4px 12px;border:1px solid #ccc;">una / la</td><td style="padding:4px 12px;border:1px solid #ccc;">unas / las</td></tr>
+            </table>
+            <p style="margin-top:8px;font-size:0.9rem;">✔ <em>unos/unas</em> = «какие-то, несколько»</p>
+        </div>
+        <div style="flex:1; min-width:200px;">
+            <h4>Род (окончания)</h4>
+            <ul style="list-style:none;padding-left:0;">
+                <li><span class="inline-icon">🔵</span> <strong>М.р:</strong> -o, -or, -ma, -ta, -aje, -e (часто)</li>
+                <li><span class="inline-icon">🔴</span> <strong>Ж.р:</strong> -a, -ción/-sión, -dad/-tad/-ed, -z, -ie, -is/-tis</li>
+                <li><span class="inline-icon">⚪</span> <strong>Универсальные:</strong> -ista (по смыслу)</li>
+                <li><span class="inline-icon">⚠️</span> Исключения: <em>la mano, la radio, el día, el mapa, el problema, el sistema…</em></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- ====== ИГРА 1: ОПРЕДЕЛИ РОД (выбери артикль) ====== -->
+<div class="game-card" id="gameGender">
+    <h3>🎯 1. Род: поставь артикль (el / la / un / una)</h3>
+    <div id="gender-words"></div>
+    <button class="btn" onclick="checkGender()">Проверить</button>
+    <button class="btn btn-outline" onclick="resetGender()">🔄 Новые слова</button>
+    <div class="score" id="gender-score"></div>
+</div>
+
+<!-- ====== ИГРА 2: ЕДИНСТВЕННОЕ / МНОЖЕСТВЕННОЕ ====== -->
+<div class="game-card" id="gameNumber">
+    <h3>🔢 2. Число: напиши форму (ед. или мн.)</h3>
+    <div class="rule-hint">
+        💡 <strong>Подсказка:</strong> обычно добавляем <em>-s</em> (гласная) или <em>-es</em> (согласная). 
+        Ударение не меняется.
+    </div>
+    <div id="number-words"></div>
+    <button class="btn" onclick="checkNumber()">Проверить</button>
+    <button class="btn btn-outline" onclick="resetNumber()">🔄 Новые слова</button>
+    <div class="score" id="number-score"></div>
+</div>
+
+<!-- ====== ИГРА 3: ВСТАВЬ АРТИКЛЬ (el / la / los / las / un / una / unos / unas) ====== -->
+<div class="game-card" id="gameArticle">
+    <h3>📌 3. Вставь подходящий артикль</h3>
+    <div id="article-words"></div>
+    <button class="btn" onclick="checkArticle()">Проверить</button>
+    <button class="btn btn-outline" onclick="resetArticle()">🔄 Новые слова</button>
+    <div class="score" id="article-score"></div>
+</div>
+
+<!-- ====== СКРЫТЫЕ ДАННЫЕ ====== -->
+<script>
+    // --------------------------------------------------------------
+    // БАНК СЛОВ ДЛЯ ИГР (род, число, артикли)
+    // --------------------------------------------------------------
+    const wordBank = [
+        // слово, род (m/f), правильный артикль ед., мн. число
+        { base: 'libro', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'libros' },
+        { base: 'chica', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'chicas' },
+        { base: 'profesor', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'profesores' },
+        { base: 'ciudad', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'ciudades' },
+        { base: 'canción', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'canciones' },
+        { base: 'problema', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'problemas' },
+        { base: 'mano', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'manos' },
+        { base: 'día', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'días' },
+        { base: 'mapa', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'mapas' },
+        { base: 'silla', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'sillas' },
+        { base: 'pájaro', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'pájaros' },
+        { base: 'flor', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'flores' },
+        { base: 'grupo', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'grupos' },
+        { base: 'radio', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'radios' },
+        { base: 'tema', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'temas' },
+        { base: 'idioma', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'idiomas' },
+        { base: 'avión', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'aviones' },
+        { base: 'camión', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'camiones' },
+        { base: 'foto', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'fotos' },
+        { base: 'moto', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'motos' },
+        { base: 'amor', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'amores' },
+        { base: 'dolor', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'dolores' },
+        { base: 'paisaje', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'paisajes' },
+        { base: 'sistema', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'sistemas' },
+        { base: 'clima', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'climas' },
+        { base: 'masaje', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'masajes' },
+        { base: 'cometa', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'cometas' },
+        { base: 'charco', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'charcos' },
+        // женские окончания
+        { base: 'lámpara', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'lámparas' },
+        { base: 'lección', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'lecciones' },
+        { base: 'verdad', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'verdades' },
+        { base: 'luz', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'luces' },
+        { base: 'serie', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'series' },
+        { base: 'tesis', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'tesis' },
+        // универсальные -ista (по смыслу, но для простоты зададим род)
+        { base: 'pianista', gender: 'm', artSing: 'el', artPlur: 'los', plural: 'pianistas' },
+        { base: 'periodista', gender: 'f', artSing: 'la', artPlur: 'las', plural: 'periodistas' },
+    ];
+
+    // --------------------------------------------------------------
+    // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+    // --------------------------------------------------------------
+    function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function pickRandom(arr, n = 6) {
+        const copy = [...arr];
+        shuffle(copy);
+        return copy.slice(0, n);
+    }
+
+    // --------------------------------------------------------------
+    // ИГРА 1: РОД (выбрать артикль)
+    // --------------------------------------------------------------
+    let genderItems = [];
+    function renderGender() {
+        genderItems = pickRandom(wordBank, 6);
+        const container = document.getElementById('gender-words');
+        let html = '';
+        genderItems.forEach((item, idx) => {
+            html += `
+                <div class="row">
+                    <span class="word-badge">${item.base}</span>
+                    <select id="gender-select-${idx}">
+                        <option value="el">el</option>
+                        <option value="la">la</option>
+                        <option value="un">un</option>
+                        <option value="una">una</option>
+                    </select>
+                    <span class="result-badge" id="gender-result-${idx}"></span>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+        document.getElementById('gender-score').textContent = '';
+    }
+
+    function checkGender() {
+        let correct = 0;
+        const total = genderItems.length;
+        genderItems.forEach((item, idx) => {
+            const select = document.getElementById(`gender-select-${idx}`);
+            const result = document.getElementById(`gender-result-${idx}`);
+            const user = select.value;
+            // правильный артикль для ед.ч. (el/la/un/una)
+            let correctArt = item.artSing; // el/la
+            // если пользователь выбрал неопределенный, проверим оба варианта
+            const isCorrect = (user === correctArt) || 
+                              (user === 'un' && correctArt === 'el') || 
+                              (user === 'una' && correctArt === 'la');
+            result.textContent = isCorrect ? '✅' : '❌';
+            result.className = 'result-badge ' + (isCorrect ? 'correct' : 'wrong');
+            if (isCorrect) correct++;
+        });
+        document.getElementById('gender-score').textContent = `✅ Правильно: ${correct} из ${total}`;
+    }
+
+    function resetGender() { renderGender(); }
+
+    // --------------------------------------------------------------
+    // ИГРА 2: ЧИСЛО (ввести форму ед. или мн.)
+    // --------------------------------------------------------------
+    let numberItems = [];
+    function renderNumber() {
+        // берем 6 слов, для каждого показываем либо ед., либо мн. (случайно)
+        const raw = pickRandom(wordBank, 6);
+        numberItems = raw.map(item => {
+            const isPlural = Math.random() < 0.5;
+            return {
+                ...item,
+                showPlural: isPlural,
+                displayWord: isPlural ? item.plural : item.base,
+                correctAnswer: isPlural ? item.base : item.plural
+            };
+        });
+        const container = document.getElementById('number-words');
+        let html = '';
+        numberItems.forEach((item, idx) => {
+            const label = item.showPlural ? '📗 мн. → ед.' : '📘 ед. → мн.';
+            html += `
+                <div class="row">
+                    <span class="word-badge">${item.displayWord}</span>
+                    <span style="font-size:0.9rem;color:#444;">${label}</span>
+                    <input type="text" id="number-input-${idx}" placeholder="напиши форму" style="flex:1;min-width:140px;">
+                    <span class="result-badge" id="number-result-${idx}"></span>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+        document.getElementById('number-score').textContent = '';
+    }
+
+    function checkNumber() {
+        let correct = 0;
+        const total = numberItems.length;
+        numberItems.forEach((item, idx) => {
+            const input = document.getElementById(`number-input-${idx}`);
+            const result = document.getElementById(`number-result-${idx}`);
+            const user = input.value.trim().toLowerCase();
+            const isCorrect = user === item.correctAnswer.toLowerCase();
+            result.textContent = isCorrect ? '✅' : '❌';
+            result.className = 'result-badge ' + (isCorrect ? 'correct' : 'wrong');
+            if (isCorrect) correct++;
+        });
+        document.getElementById('number-score').textContent = `✅ Правильно: ${correct} из ${total}`;
+    }
+
+    function resetNumber() { renderNumber(); }
+
+    // --------------------------------------------------------------
+    // ИГРА 3: ВСТАВЬ АРТИКЛЬ (выпадающий список)
+    // --------------------------------------------------------------
+    let articleItems = [];
+    function renderArticle() {
+        const raw = pickRandom(wordBank, 6);
+        articleItems = raw.map(item => {
+            // случайно: показываем ед. или мн.
+            const isPlural = Math.random() < 0.5;
+            const displayWord = isPlural ? item.plural : item.base;
+            const correctArt = isPlural ? item.artPlur : item.artSing;
+            return { ...item, displayWord, correctArt, isPlural };
+        });
+        const container = document.getElementById('article-words');
+        let html = '';
+        articleItems.forEach((item, idx) => {
+            html += `
+                <div class="row">
+                    <span class="word-badge">${item.displayWord}</span>
+                    <span style="font-size:0.9rem;color:#444;">${item.isPlural ? 'мн.ч.' : 'ед.ч.'}</span>
+                    <select id="article-select-${idx}">
+                        <option value="el">el</option>
+                        <option value="la">la</option>
+                        <option value="los">los</option>
+                        <option value="las">las</option>
+                        <option value="un">un</option>
+                        <option value="una">una</option>
+                        <option value="unos">unos</option>
+                        <option value="unas">unas</option>
+                    </select>
+                    <span class="result-badge" id="article-result-${idx}"></span>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+        document.getElementById('article-score').textContent = '';
+    }
+
+    function checkArticle() {
+        let correct = 0;
+        const total = articleItems.length;
+        articleItems.forEach((item, idx) => {
+            const select = document.getElementById(`article-select-${idx}`);
+            const result = document.getElementById(`article-result-${idx}`);
+            const user = select.value;
+            // правильный артикль: для определенного и неопределенного — разрешим оба
+            const correctDef = item.correctArt; // el/la/los/las
+            let correctUndef = '';
+            if (item.correctArt === 'el') correctUndef = 'un';
+            else if (item.correctArt === 'la') correctUndef = 'una';
+            else if (item.correctArt === 'los') correctUndef = 'unos';
+            else if (item.correctArt === 'las') correctUndef = 'unas';
+            const isCorrect = (user === correctDef) || (user === correctUndef);
+            result.textContent = isCorrect ? '✅' : '❌';
+            result.className = 'result-badge ' + (isCorrect ? 'correct' : 'wrong');
+            if (isCorrect) correct++;
+        });
+        document.getElementById('article-score').textContent = `✅ Правильно: ${correct} из ${total}`;
+    }
+
+    function resetArticle() { renderArticle(); }
+
+    // --------------------------------------------------------------
+    // ИНИЦИАЛИЗАЦИЯ
+    // --------------------------------------------------------------
+    window.onload = function() {
+        renderGender();
+        renderNumber();
+        renderArticle();
+    };
+</script>
+
+<div style="margin-top:40px;border-top:2px solid #cc9900;padding-top:20px;text-align:center;color:#666;font-size:0.9rem;">
+    🧠 По мотивам твоих скринов — играй и запоминай род, число и артикли.
+</div>
+
+</body>
+</html>
